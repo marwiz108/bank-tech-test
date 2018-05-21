@@ -24,7 +24,7 @@ date || credit || debit || balance
 ```
 As an account holder
 So that I can manage my money
-I need to have a bank account
+I need to have a bank account with an initial balance of zero
 
 As an account holder
 So that I can store my money safely
