@@ -35,6 +35,10 @@ So that I can spend money
 I need to be able to withdraw money from my account
 
 As an account holder
+So that I can log my account activity
+I need to have a transaction history
+
+As an account holder
 So that I can see my transaction history
 I need to be able to print an account statement
 ```
