@@ -6,11 +6,11 @@ This program is written in Ruby language, using OOD and TDD.
 
 ## Criteria
 
-_Given_ a client makes a deposit of 1000 on 10-01-2012
-_And_ a deposit of 2000 on 13-01-2012
-_And_ a withdrawal of 500 on 14-01-2012
-_When_ she prints her bank statement
-_Then_ she would see
+__Given__ a client makes a deposit of 1000 on 10-01-2012  
+__And__ a deposit of 2000 on 13-01-2012  
+__And__ a withdrawal of 500 on 14-01-2012  
+__When__ she prints her bank statement  
+__Then__ she would see  
 
 ```
 date || credit || debit || balance
@@ -38,3 +38,7 @@ As an account holder
 So that I can see my transaction history
 I need to be able to print an account statement
 ```
+
+## Notes
+
+Initially, I drew out my Domain Model to include three classes; Account, Balance, and Transactions. The starting balance attribute in the Account class would have been extracted from the Balance class, which would have the balance attribute. Additionally, the ```.deposit(amount)``` and ```.withdraw(amount)``` methods would only display the results, which are to be calculated in the Balance class with ```.add(amount)``` and ```.deduct(amount)``` methods. However, this involved using doubles/mocks. Considering I have not fully grasped how to use doubles/mocks, I decided to remove the Balance class in order to be able to complete the challenge without taking too much time.
