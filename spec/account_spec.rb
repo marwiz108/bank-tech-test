@@ -9,6 +9,11 @@ describe Account do
   end
 
   it 'can deposit money' do
-    expect{ account.deposit(amount) }.to change { account.balance }.by(amount)
+    expect { account.deposit(amount) }.to change { account.balance }.by(amount)
+  end
+
+  it 'can withdraw money' do
+    account.deposit(amount)
+    expect { account.withdraw(amount) }.to change { account.balance }.by(-amount)
   end
 end
