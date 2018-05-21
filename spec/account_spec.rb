@@ -16,4 +16,9 @@ describe Account do
     account.deposit(amount)
     expect { account.withdraw(amount) }.to change { account.balance }.by(-amount)
   end
+
+  it 'does not allow withdrawals if balance is less than withdrawal amount' do
+    error_message = "You do not have sufficient funds to withdraw £#{amount}."
+    expect { account.withdraw(amount) }.to raise_error NoBalanceError, error_message
+  end
 end
