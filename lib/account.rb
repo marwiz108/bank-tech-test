@@ -14,6 +14,7 @@ class Account
   def withdraw(amount)
     error_message = "You do not have sufficient funds to withdraw £#{amount}."
     raise NoBalanceError, error_message unless balance >= amount
+    @transactions.debit(amount)
     @balance -= amount
   end
 end

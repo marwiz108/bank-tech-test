@@ -3,6 +3,7 @@ require 'account'
 describe Account do
   subject(:account) { described_class.new }
   let(:amount) { 500 }
+  let(:date) { Time.new.strftime('%d/%m/%Y') }
 
   it 'can create a bank account' do
     expect(account.balance).to eq(0)
@@ -20,5 +21,14 @@ describe Account do
   it 'does not allow withdrawals if balance is less than withdrawal amount' do
     error_message = "You do not have sufficient funds to withdraw £#{amount}."
     expect { account.withdraw(amount) }.to raise_error NoBalanceError, error_message
+  end
+
+  it 'stores deposits and withdrawals as transactions' do
+    account.deposit(amount)
+    account.withdraw(amount)
+    expect(account.transactions.rows).to eq([
+                                              [date, amount, '-', amount],
+                                              [date, '-', amount, 0]
+                                            ])
   end
 end
