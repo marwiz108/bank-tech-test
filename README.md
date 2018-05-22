@@ -46,3 +46,40 @@ I need to be able to print an account statement as a table
 ## Notes
 
 Initially, I drew out my Domain Model to include three classes; Account, Balance, and Transactions. The starting balance attribute in the Account class would have been extracted from the Balance class, which would have the balance attribute. Additionally, the ```.deposit(amount)``` and ```.withdraw(amount)``` methods would only display the results, which are to be calculated in the Balance class with ```.add(amount)``` and ```.deduct(amount)``` methods. However, this involved using doubles/mocks. Considering I have not fully grasped how to use doubles/mocks, I decided to remove the Balance class in order to be able to complete the challenge without taking too much time.
+
+The final tests to test whether a statement was printing I did not manage to figure out how to write the test to show that the output is a table. I also did not manage to get a test to show whether some strings or code is included in the table. However the table works when run in the terminal, as shown below.
+
+## Terminal Table
+```bash
+2.5.0 :001 > require './lib/account'
+ => true
+2.5.0 :002 > a = Account.new
+ => #<Account:0x00007fb25a831f08 @balance=0, @transactions=#<Transactions:0x00007fb25a831e40 @balance=0, @rows=[]>>
+2.5.0 :003 > a.deposit(200)
+ => 200
+2.5.0 :004 > a.withdraw(300)
+Traceback (most recent call last):
+        3: from /Users/marwaelali/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        2: from (irb):4
+        1: from /Users/marwaelali/Projects/weekly-challenges/week10/bank-tech-test/lib/account.rb:18:in `withdraw'
+NoBalanceError (You do not have sufficient funds to withdraw £300.)
+2.5.0 :005 > a.withdraw(50)
+ => 150
+2.5.0 :006 > a.deposit(630)
+ => 780
+2.5.0 :007 > a.withdraw(60)
+ => 720
+2.5.0 :008 > a.print_statement
++------------+--------+-------+---------+
+|           Account Statement           |
++------------+--------+-------+---------+
+| Date       | Credit | Debit | Balance |
++------------+--------+-------+---------+
+| 22/05/2018 | 200    | -     | 200     |
+| 22/05/2018 | -      | 50    | 150     |
+| 22/05/2018 | 630    | -     | 780     |
+| 22/05/2018 | -      | 60    | 720     |
++------------+--------+-------+---------+
+ => nil
+2.5.0 :009 > exit
+```
