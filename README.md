@@ -51,10 +51,11 @@ The final tests to test whether a statement was printing I did not manage to fig
 
 ## Terminal Table
 ```bash
+$ irb
 2.5.0 :001 > require './lib/account'
  => true
 2.5.0 :002 > a = Account.new
- => #<Account:0x00007fb25a831f08 @balance=0, @transactions=#<Transactions:0x00007fb25a831e40 @balance=0, @rows=[]>>
+ => #<Account:0x00007ff20c03e750 @balance=0, @transactions=#<Transactions:0x00007ff20c03e688 @balance=0, @rows=[]>>
 2.5.0 :003 > a.deposit(200)
  => 200
 2.5.0 :004 > a.withdraw(300)
@@ -65,21 +66,20 @@ Traceback (most recent call last):
 NoBalanceError (You do not have sufficient funds to withdraw £300.)
 2.5.0 :005 > a.withdraw(50)
  => 150
-2.5.0 :006 > a.deposit(630)
- => 780
-2.5.0 :007 > a.withdraw(60)
+2.5.0 :006 > a.deposit(570)
  => 720
+2.5.0 :007 > a.withdraw(60)
+ => 660
 2.5.0 :008 > a.print_statement
 +------------+--------+-------+---------+
 |           Account Statement           |
 +------------+--------+-------+---------+
 | Date       | Credit | Debit | Balance |
 +------------+--------+-------+---------+
-| 22/05/2018 | 200    | -     | 200     |
+| 22/05/2018 | -      | 60    | 660     |
+| 22/05/2018 | 570    | -     | 720     |
 | 22/05/2018 | -      | 50    | 150     |
-| 22/05/2018 | 630    | -     | 780     |
-| 22/05/2018 | -      | 60    | 720     |
-+------------+--------+-------+---------+
- => nil
+| 22/05/2018 | 200    | -     | 200     |
++------------+--------+-------+---------+ => nil
 2.5.0 :009 > exit
 ```
