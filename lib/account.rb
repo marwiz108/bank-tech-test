@@ -1,3 +1,5 @@
+require_relative 'transactions'
+
 class Account
   attr_reader :balance, :transactions
 
@@ -16,6 +18,10 @@ class Account
     raise NoBalanceError, error_message unless balance >= amount
     @transactions.debit(amount)
     @balance -= amount
+  end
+
+  def print_statement
+    @transactions.show_table
   end
 end
 

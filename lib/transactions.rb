@@ -15,4 +15,13 @@ class Transactions
   def debit(amount)
     rows << [Time.new.strftime('%d/%m/%Y'), '-', amount, @balance -= amount]
   end
+
+  def show_table
+    @table = Terminal::Table.new do |t|
+      t.title = 'Account Statement'
+      t.headings = ['Date', 'Credit', 'Debit', 'Balance']
+      t.rows = @rows
+    end
+    print @table
+  end
 end

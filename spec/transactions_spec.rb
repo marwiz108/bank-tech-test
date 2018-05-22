@@ -24,4 +24,8 @@ describe Transactions do
                                       [date, '-', 200, 200]
                                     ])
   end
+
+  it 'shows the table of transactions' do
+    expect(transactions.show_table).to be nil
+  end
 end

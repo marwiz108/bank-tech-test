@@ -1,4 +1,5 @@
 require 'account'
+require 'terminal-table'
 
 describe Account do
   subject(:account) { described_class.new }
@@ -30,5 +31,9 @@ describe Account do
                                               [date, amount, '-', amount],
                                               [date, '-', amount, 0]
                                             ])
+  end
+
+  it 'prints the transactions in an account statement' do
+    expect(account.print_statement).to be nil
   end
 end
