@@ -40,7 +40,7 @@ I need to have a transaction history
 
 As an account holder
 So that I can see my transaction history
-I need to be able to print an account statement
+I need to be able to print an account statement as a table
 ```
 
 ## Notes
