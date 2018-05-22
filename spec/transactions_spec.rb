@@ -9,8 +9,8 @@ describe Transactions do
     transactions.credit(100)
     transactions.credit(200)
     expect(transactions.rows).to eq([
-                                      [date, 100, '-', 100],
-                                      [date, 200, '-', 300]
+                                      [date, 200, '-', 300],
+                                      [date, 100, '-', 100]
                                     ])
   end
 
@@ -19,9 +19,9 @@ describe Transactions do
     transactions.debit(100)
     transactions.debit(200)
     expect(transactions.rows).to eq([
-                                      [date, amount, '-', 500],
+                                      [date, '-', 200, 200],
                                       [date, '-', 100, 400],
-                                      [date, '-', 200, 200]
+                                      [date, amount, '-', 500]
                                     ])
   end
 

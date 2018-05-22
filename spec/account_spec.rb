@@ -28,12 +28,14 @@ describe Account do
     account.deposit(amount)
     account.withdraw(amount)
     expect(account.transactions.rows).to eq([
-                                              [date, amount, '-', amount],
-                                              [date, '-', amount, 0]
+                                              [date, '-', amount, 0],
+                                              [date, amount, '-', amount]
                                             ])
   end
 
   it 'prints the transactions in an account statement' do
+    account.deposit(amount)
+    account.withdraw(amount)
     expect(account.print_statement).to be nil
   end
 end

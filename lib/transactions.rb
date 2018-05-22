@@ -9,11 +9,11 @@ class Transactions
   end
 
   def credit(amount)
-    rows << [Time.new.strftime('%d/%m/%Y'), amount, '-', @balance += amount]
+    rows.unshift([Time.new.strftime('%d/%m/%Y'), amount, '-', @balance += amount])
   end
 
   def debit(amount)
-    rows << [Time.new.strftime('%d/%m/%Y'), '-', amount, @balance -= amount]
+    rows.unshift([Time.new.strftime('%d/%m/%Y'), '-', amount, @balance -= amount])
   end
 
   def show_table
