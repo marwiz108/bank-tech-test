@@ -13,4 +13,15 @@ describe Transactions do
                                       [date, 200, '-', 300]
                                     ])
   end
+
+  it 'stores withdrawals as debit transactions' do
+    transactions.credit(amount)
+    transactions.debit(100)
+    transactions.debit(200)
+    expect(transactions.rows).to eq([
+                                      [date, amount, '-', 500],
+                                      [date, '-', 100, 400],
+                                      [date, '-', 200, 200]
+                                    ])
+  end
 end

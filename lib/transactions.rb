@@ -11,4 +11,8 @@ class Transactions
   def credit(amount)
     rows << [Time.new.strftime('%d/%m/%Y'), amount, '-', @balance += amount]
   end
+
+  def debit(amount)
+    rows << [Time.new.strftime('%d/%m/%Y'), '-', amount, @balance -= amount]
+  end
 end
