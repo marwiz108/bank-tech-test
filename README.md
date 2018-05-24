@@ -46,13 +46,13 @@ You can check your balance at any time by running:
 To make a deposit of a sum:
 ```ruby
 2.5.0 :004 > a.deposit(200)
- => "You have credited your account with £200. Your current balance is now 200."
+ => "You have credited your account with £200. Your current balance is now £200."
 ```
 
 To make a withdrawal:
 ```ruby
 2.5.0 :005 > a.withdraw(50)
- => "You have debited your account with 50. Your current balance is now 150."
+ => "You have debited your account with £50. Your current balance is now £150."
 ```
 
 You cannot withdraw an amount over your current balance:
