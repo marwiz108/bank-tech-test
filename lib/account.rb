@@ -9,19 +9,21 @@ class Account
   end
 
   def deposit(amount)
-    transactions.credit(amount)
     @balance += amount
+    transactions.credit(balance, amount)
+    "You have credited your account with £#{amount}. Your current balance is now #{balance}."
   end
 
   def withdraw(amount)
     error_message = "You do not have sufficient funds to withdraw £#{amount}."
     raise NoBalanceError, error_message unless balance >= amount
-    @transactions.debit(amount)
     @balance -= amount
+    transactions.debit(balance, amount)
+    "You have debited your account with #{amount}. Your current balance is now #{balance}."
   end
 
   def print_statement
-    @transactions.show_table
+    # Statement.new.show_table ?
   end
 end
 
