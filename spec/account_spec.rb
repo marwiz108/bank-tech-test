@@ -33,17 +33,20 @@ describe Account do
                                             ])
   end
 
-  # it 'prints the account statement as a table' do
-  #   expect { account.print_statement }.to output("
-  #     +------------+--------+-------+---------+
-  #     |           Account Statement           |
-  #     +------------+--------+-------+---------+
-  #     | Date       | Credit | Debit | Balance |
-  #     +------------+--------+-------+---------+
-  #     | 22/05/2018 | -      | 60    | 660     |
-  #     | 22/05/2018 | 570    | -     | 720     |
-  #     | 22/05/2018 | -      | 50    | 150     |
-  #     | 22/05/2018 | 200    | -     | 200     |
-  #     +------------+--------+-------+---------+").to_stdout
-  # end
+  it 'prints the account statement as a table' do
+    account.deposit(200)
+    account.deposit(100)
+    account.withdraw(150)
+    expect { account.print_statement }.to output(
+      "+------------+--------+-------+---------+\n" \
+      "|           Account Statement           |\n" \
+      "+------------+--------+-------+---------+\n" \
+      "| Date       | Credit | Debit | Balance |\n" \
+      "+------------+--------+-------+---------+\n" \
+      "| #{date} | -      | 150   | 150     |\n" \
+      "| #{date} | 100    | -     | 300     |\n" \
+      "| #{date} | 200    | -     | 200     |\n" \
+      "+------------+--------+-------+---------+\n"
+    ).to_stdout
+  end
 end

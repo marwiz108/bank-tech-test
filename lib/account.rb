@@ -1,4 +1,5 @@
 require_relative 'transactions'
+require_relative 'statement'
 
 class Account
   attr_reader :balance, :transactions
@@ -23,7 +24,8 @@ class Account
   end
 
   def print_statement
-    # Statement.new.show_table ?
+    statement = Statement.new(@transactions.rows)
+    statement.show_table
   end
 end
 
