@@ -33,9 +33,17 @@ describe Account do
                                             ])
   end
 
-  it 'prints the transactions in an account statement' do
-    account.deposit(amount)
-    account.withdraw(amount)
-    expect(account.print_statement).to be nil
-  end
+  # it 'prints the account statement as a table' do
+  #   expect { account.print_statement }.to output("
+  #     +------------+--------+-------+---------+
+  #     |           Account Statement           |
+  #     +------------+--------+-------+---------+
+  #     | Date       | Credit | Debit | Balance |
+  #     +------------+--------+-------+---------+
+  #     | 22/05/2018 | -      | 60    | 660     |
+  #     | 22/05/2018 | 570    | -     | 720     |
+  #     | 22/05/2018 | -      | 50    | 150     |
+  #     | 22/05/2018 | 200    | -     | 200     |
+  #     +------------+--------+-------+---------+").to_stdout
+  # end
 end
