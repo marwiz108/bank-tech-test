@@ -102,15 +102,3 @@ As an account holder
 So that I can see my transaction history
 I need to be able to print an account statement as a table
 ```
-
-## Notes
-
-Initially, I drew out my Domain Model to include three classes; Account, Balance, and Transactions. The starting balance attribute in the Account class would have been extracted from the Balance class, which would have the balance attribute. Additionally, the ```.deposit(amount)``` and ```.withdraw(amount)``` methods would only display the results, which are to be calculated in the Balance class with ```.add(amount)``` and ```.deduct(amount)``` methods. However, this involved using doubles/mocks. Considering I have not fully grasped how to use doubles/mocks, I decided to remove the Balance class in order to be able to complete the challenge without taking too much time.
-
-The final tests to test whether a statement was printing I did not manage to figure out how to write the test to show that the output is a table. I also did not manage to get a test to show whether some strings or code is included in the table. However the table works when run in the terminal, as shown below.
-
-### Code Review
-
-After my code review with a coach, as I suspected I needed a third class, but not a Balance class - I needed to extract a Statement class from the Transactions class, since it was responsible for storing rows of transactions AND printing out the statement table. Thiswas not in line with the Single Responsibility Principle, so extracting a class for printing the Statement would fix that.
-
-Another problem was my "bad code" - I was keeping track of the balance in two different classes, and it was being updated separately in each class. I initially did this because I needed to access the balance instance variable in the Transactions class. However this could have raised errors in the future, so I managed to change my `.credit(amount)` and `.debit(amount)` methods, passing them two parameters instead like `.credit(balance, amount)` and `.debit(balance, amount)`. This way, when the method is called in the Account class it inputs the updated balance, which is then passed as one of the arguments, being able to input the updated balance into the rows of transactions.
